@@ -4,7 +4,7 @@ export default class MyDocument extends Document {
     render() {
         return (
             <Html>
-                <title>BoilerPlate by ygor</title>
+                <title>TubaMusic</title>
                 <Head>
                 </Head>
                 <Main />
