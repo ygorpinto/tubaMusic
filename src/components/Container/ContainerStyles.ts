@@ -102,8 +102,28 @@ background-size:cover;
     }
 
     .data {
+        margin-top:2rem;
+        display:flex;
+        justify-content:center;
+        align-items:center;
+        flex-wrap:wrap;
+        overflow-y:scroll;
+
         height:50vh;
         width:100%;
+
+        img {
+            max-width:90%;
+        }
+
+        .item {
+            text-align:center;
+            height:20rem;
+            width:15rem;
+            color:#fff;
+            font-family: 'Montserrat', sans-serif;
+            font-weight:400;
+        }
     }
 
 }

@@ -55,7 +55,7 @@ export default function Home () {
                 payload:data
               });
           }
-          console.log(state.data.artists.items);  
+          console.log(state.data?.artists.items);  
       }
 
       const handleSearch = (e) => {
@@ -81,9 +81,13 @@ export default function Home () {
                 type="text"/>
                 </form>
                 <div className="data">
-                  {state.data.artists.items.map(item=>{
+                  {state.data?.artists.items.map(item=>{
                       return (
-                        <p>{item.name}</p>
+                        <div className="item">
+                            <p>{item.name}</p>
+                            {item.images[0] ? <img src={item.images[0].url} alt="image"/>
+                            :(<img src="https://i.picsum.photos/id/658/200/200.jpg?hmac=f24wxXCkgtH72eZ6mY95KRxTyvEG-_3ysR9z-R0a1QM" alt="ramdom"/>)}
+                        </div>
                       )})}  
 
                 </div>
