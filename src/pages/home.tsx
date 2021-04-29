@@ -12,9 +12,7 @@ export default function Home () {
       } = useContext(Context);
     
       useEffect(()=>{
-        // fetchData();
-        // getTokken();
-        //     console.log(state.data);  
+        getTokken();
       },[])
     
       async function getTokken() {
@@ -37,23 +35,35 @@ export default function Home () {
           .catch((err) => console.log(err));
         }
     
-      const fetchData = async () => {
-          const { data } = await api.get('search?',{
-            headers:{
-              Authorization: `Bearer ${state.token}`
-            },
-            params:{
-              query:"David+Bowie",
-              offset:"0",
-              limit:"20",
-              type:"artist"
-            }
-          })
-            
-          dispatch({
-            type:"getData",
-            payload:data
-          });
+      const fetchData = async (e) => {
+          e.preventDefault();
+          if (state.token) {
+              const { data } = await api.get('search?',{
+                headers:{
+                  Authorization: `Bearer ${state.token}`
+                },
+                params:{
+                  query:state.query,
+                  offset:"0",
+                  limit:"20",
+                  type:"artist"
+                }
+              })
+                
+              dispatch({
+                type:"getData",
+                payload:data
+              });
+          }
+          console.log(state.data.artists.items);  
+      }
+
+      const handleSearch = (e) => {
+        e.preventDefault();
+        dispatch({
+            type:"setQuery",
+            payload:e.target.value
+        });
       }
     
     
@@ -62,10 +72,21 @@ export default function Home () {
             <div className="showData">
                 <h1>Tuba Music.</h1>
                 <h2>enjoy it</h2>
-                <input 
+                <form
+                onSubmit={e => fetchData(e)}
+                >
+                <input
+                onChange={e=>handleSearch(e)}
                 placeholder={"Search your Music, Artist, Album .."}
                 type="text"/>
-            <div className="data"></div>
+                </form>
+                <div className="data">
+                  {state.data.artists.items.map(item=>{
+                      return (
+                        <p>{item.name}</p>
+                      )})}  
+
+                </div>
             </div>
         </Container>
     )

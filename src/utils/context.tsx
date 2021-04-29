@@ -9,7 +9,8 @@ export const Context = createContext({} as ContextTypes);
 
 let initialState = {
     token:null,
-    data:null
+    data:null,
+    query:null
 }
 
 const reducer = (state,action) => {
@@ -23,6 +24,11 @@ const reducer = (state,action) => {
         return {
             ...state,
             data:action.payload
+        }
+        case "setQuery":
+        return {
+            ...state,
+            query:action.payload
         }
         default:
         return new Error('nothing returns');
