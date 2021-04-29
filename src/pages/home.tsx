@@ -2,6 +2,7 @@ import { useContext, useEffect, useState } from "react";
 import axios from "axios";
 import api from "../utils/api";
 import { Context } from "../utils/context";
+import Container from "../components/Container/Container";
 
 export default function Home () {
     
@@ -57,6 +58,14 @@ export default function Home () {
     
     
     return (
-        <div>Aqui estão as músicas</div>
+        <Container>
+            <div className="showData">
+                <h1>Tuba Music.</h1>
+                <h2>enjoy it</h2>
+                <input 
+                placeholder={"Search your Music, Artist, Album .."}
+                type="text"/>
+            </div>
+        </Container>
     )
 }
