@@ -56,7 +56,7 @@ background-size:cover;
 
 .showData {
     width:80%;
-    height:70vh;
+    height:80vh;
     background:rgba(0,0,0,0.1);
     backdrop-filter:blur(5px);
     border-radius:1rem;
@@ -99,6 +99,11 @@ background-size:cover;
             font-family: 'Montserrat', sans-serif;
             font-weight:200;
         }
+    }
+
+    .data {
+        height:50vh;
+        width:100%;
     }
 
 }

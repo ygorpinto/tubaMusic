@@ -65,6 +65,7 @@ export default function Home () {
                 <input 
                 placeholder={"Search your Music, Artist, Album .."}
                 type="text"/>
+            <div className="data"></div>
             </div>
         </Container>
     )
