@@ -18,7 +18,7 @@ export default function Home() {
   return (
       <Container>
         <div className="buttons">
-        <button onClick={()=>signIn()}>Entre com sua conta Spotify
+        <button onClick={()=>signIn()}>Entre com sua conta Spotify.
         <img src="https://cdn.iconscout.com/icon/free/png-512/spotify-11-432546.png" alt="spotfyicon"/>
         </button>
         </div>
