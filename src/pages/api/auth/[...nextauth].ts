@@ -12,5 +12,5 @@ export default NextAuth({
       clientSecret: process.env.CLIENT_SECRET
     })
   ]
-})
+});
 
