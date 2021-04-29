@@ -37,9 +37,15 @@ export default function Home() {
     }
 
   const fetchData = async () => {
-      const { data } = await api.get('tracks/2TpxZ7JUBn3uw46aR7qd6V',{
+      const { data } = await api.get('search?',{
         headers:{
           Authorization: `Bearer ${token}`
+        },
+        params:{
+          query:"David+Bowie",
+          offset:"0",
+          limit:"20",
+          type:"artist"
         }
       })
         
