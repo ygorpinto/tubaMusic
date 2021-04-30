@@ -36,6 +36,8 @@ background-size:cover;
         font-family: 'Montserrat', sans-serif;
         color:#fff;
 
+        cursor:pointer;
+
         display:flex;
         align-items:center;
         justify-content:center;

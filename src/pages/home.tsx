@@ -54,8 +54,13 @@ export default function Home () {
                 type:"getData",
                 payload:data
               });
+              dispatch({
+                type:"getArtistID",
+                payload:data.artists.items[0].id
+              });
+
+            console.log(state.artistID);  
           }
-          // console.log(state.data);  
       }
 
       const handleSearch = (e) => {
@@ -64,6 +69,19 @@ export default function Home () {
             type:"setQuery",
             payload:e.target.value
         });
+      }
+
+      const getPreviousSong = async () => {
+        const { data } = await api.get(`artists/${state.artistID}/top-tracks`,{
+          headers:{
+            Authorization: `Bearer ${state.token}`
+          },
+          params:{
+            market:"BR"
+          }
+        });
+        console.log(data);
+        
       }
     
     
@@ -85,10 +103,14 @@ export default function Home () {
                       return (
                         <div 
                         key={item.id}
-                        className="item">
+                        className="item"
+                        >
                             <p>{item.name}</p>
                             {item.images[0] ? <img src={item.images[0].url} alt="image"/>
                             :(<img src="https://i.picsum.photos/id/658/200/200.jpg?hmac=f24wxXCkgtH72eZ6mY95KRxTyvEG-_3ysR9z-R0a1QM" alt="ramdom"/>)}
+                            <button
+                            onClick={getPreviousSong}
+                            >Play</button>
                         </div>
                       )})}  
 

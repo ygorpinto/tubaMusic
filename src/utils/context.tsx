@@ -10,7 +10,8 @@ export const Context = createContext({} as ContextTypes);
 let initialState = {
     token:null,
     data:null,
-    query:null
+    query:null,
+    artistID:null
 }
 
 const reducer = (state,action) => {
@@ -29,6 +30,11 @@ const reducer = (state,action) => {
         return {
             ...state,
             query:action.payload
+        }
+        case "getArtistID":
+        return {
+            ...state,
+            artistID:action.payload
         }
         default:
         return new Error('nothing returns');
