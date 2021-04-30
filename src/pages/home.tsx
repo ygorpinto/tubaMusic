@@ -19,6 +19,12 @@ export default function Home () {
         play();
       },[state.isPlaying])
 
+      useEffect(()=>{
+        handleArtistTrack();
+        console.log(state.isArtistTrack);
+        
+      },[state.artistTrack])
+
       const audioRef = useRef(null);
     
       async function getTokken() {
@@ -65,7 +71,7 @@ export default function Home () {
                 payload:data.artists.items[0].id
               });
 
-            console.log(state.artistID);  
+            console.log(state.data);  
           }
       }
 
@@ -109,6 +115,13 @@ export default function Home () {
         }
       }
     
+      const handleArtistTrack = () => {
+        dispatch({
+          type:"setIsArtistTrack",
+          payload: state.artistTrack ? true : false
+        })
+      }
+
     return (
         <Container>
             <div className="showData">
@@ -128,27 +141,20 @@ export default function Home () {
                   src={state.artistTrack}
                   ref={audioRef}
                   />
-                  {state.data?.artists.items.map(item=>{
-                      return (
-                        <div 
-                        key={item.id}
-                        className="item"
-                        >
-                            <p>{item.name}</p>
-                            {item.images[0] ? <img src={item.images[0].url} alt="image"/>
+                  <div className="item">
+                            <p>{state.data?.artists.items[0].name}</p>
+                            {state.data?.artists.items[0].images[0] ? <img src={state.data?.artists.items[0].images[0].url} alt="image"/>
                             :(<img src="https://i.picsum.photos/id/658/200/200.jpg?hmac=f24wxXCkgtH72eZ6mY95KRxTyvEG-_3ysR9z-R0a1QM" alt="ramdom"/>)}
-                            <button
-                            onClick={getPreviousSong}
-                            >{!state.isPlaying ? (
-                              <img 
-                              src="https://png.pngtree.com/png-vector/20190223/ourmid/pngtree-vector-play-icon-png-image_695746.jpg" alt="play"/>
-                            ) : (
-                              <img 
-                              src="https://w7.pngwing.com/pngs/879/589/png-transparent-pause-logo-computer-icons-button-media-player-pause-button-rectangle-black-internet-thumbnail.png" alt="play"/>
-                            ) }</button>
-                        </div>
-                      )})}  
-
+                              <button
+                              onClick={getPreviousSong}
+                              >{!state.isPlaying ? (
+                                <img 
+                                src="https://png.pngtree.com/png-vector/20190223/ourmid/pngtree-vector-play-icon-png-image_695746.jpg" alt="play"/>
+                              ) : (
+                                <img 
+                                src="https://w7.pngwing.com/pngs/879/589/png-transparent-pause-logo-computer-icons-button-media-player-pause-button-rectangle-black-internet-thumbnail.png" alt="play"/>
+                              ) }</button>
+                    </div>
                 </div>
             </div>
         </Container>

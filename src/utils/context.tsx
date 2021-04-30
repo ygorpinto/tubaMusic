@@ -13,7 +13,8 @@ let initialState = {
     query:null,
     artistID:null,
     artistTrack:null,
-    isPlaying:false
+    isPlaying:false,
+    isArtistTrack:false
 }
 
 const reducer = (state,action) => {
@@ -47,6 +48,11 @@ const reducer = (state,action) => {
         return {
             ...state,
             isPlaying:action.payload
+        }
+        case "setIsArtistTrack":
+        return {
+            ...state,
+            isArtistTrack:action.payload
         }
         default:
         return new Error('nothing returns');
