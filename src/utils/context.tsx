@@ -11,7 +11,9 @@ let initialState = {
     token:null,
     data:null,
     query:null,
-    artistID:null
+    artistID:null,
+    artistTrack:null,
+    isPlaying:false
 }
 
 const reducer = (state,action) => {
@@ -35,6 +37,16 @@ const reducer = (state,action) => {
         return {
             ...state,
             artistID:action.payload
+        }
+        case "getArtistTrack":
+        return {
+            ...state,
+            artistTrack:action.payload
+        }
+        case "setIsPlaying":
+        return {
+            ...state,
+            isPlaying:action.payload
         }
         default:
         return new Error('nothing returns');

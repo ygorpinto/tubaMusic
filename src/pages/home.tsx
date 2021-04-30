@@ -1,4 +1,4 @@
-import { useContext, useEffect, useState } from "react";
+import { useContext, useEffect, useRef, useState } from "react";
 import axios from "axios";
 import api from "../utils/api";
 import { Context } from "../utils/context";
@@ -14,6 +14,12 @@ export default function Home () {
       useEffect(()=>{
         getTokken();
       },[])
+
+      useEffect(()=>{
+        play();
+      },[state.isPlaying])
+
+      const audioRef = useRef(null);
     
       async function getTokken() {
         const urlSpotify = "https://accounts.spotify.com/api/token";
@@ -80,10 +86,28 @@ export default function Home () {
             market:"BR"
           }
         });
+        dispatch({
+          type:"getArtistTrack",
+          payload:data.tracks[0].preview_url
+        })
+        dispatch({
+          type:"setIsPlaying",
+          payload:!state.isPlaying
+        })
         console.log(data);
-        
+        console.log(state.artistTrack);
       }
     
+      const play = () => {
+        if (!audioRef.current) {
+            return;
+        }
+        if (state.isPlaying) {
+          audioRef.current.play()
+        } else {
+          audioRef.current.pause()
+        }
+      }
     
     return (
         <Container>
@@ -99,6 +123,11 @@ export default function Home () {
                 type="text"/>
                 </form>
                 <div className="data">
+                  <audio
+                  autoPlay
+                  src={state.artistTrack}
+                  ref={audioRef}
+                  />
                   {state.data?.artists.items.map(item=>{
                       return (
                         <div 
