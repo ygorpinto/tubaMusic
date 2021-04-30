@@ -125,6 +125,17 @@ background-size:cover;
             color:#fff;
             font-family: 'Montserrat', sans-serif;
             font-weight:400;
+
+            button {
+
+                background-color:transparent;
+                border:none;
+
+                img {
+                    max-width:2rem;
+                    border-radius:50%;
+                }
+            }
         }
     }
 

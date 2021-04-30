@@ -139,7 +139,13 @@ export default function Home () {
                             :(<img src="https://i.picsum.photos/id/658/200/200.jpg?hmac=f24wxXCkgtH72eZ6mY95KRxTyvEG-_3ysR9z-R0a1QM" alt="ramdom"/>)}
                             <button
                             onClick={getPreviousSong}
-                            >Play</button>
+                            >{!state.isPlaying ? (
+                              <img 
+                              src="https://png.pngtree.com/png-vector/20190223/ourmid/pngtree-vector-play-icon-png-image_695746.jpg" alt="play"/>
+                            ) : (
+                              <img 
+                              src="https://w7.pngwing.com/pngs/879/589/png-transparent-pause-logo-computer-icons-button-media-player-pause-button-rectangle-black-internet-thumbnail.png" alt="play"/>
+                            ) }</button>
                         </div>
                       )})}  
 
