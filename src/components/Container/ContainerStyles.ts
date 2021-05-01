@@ -109,7 +109,6 @@ background-size:cover;
         justify-content:center;
         align-items:center;
         flex-wrap:wrap;
-        overflow-y:scroll;
 
         height:50vh;
         width:100%;
