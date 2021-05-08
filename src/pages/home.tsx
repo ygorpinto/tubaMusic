@@ -3,6 +3,7 @@ import axios from "axios";
 import api from "../utils/api";
 import { Context } from "../utils/context";
 import Container from "../components/Container/Container";
+import Player from "../components/Player/Player";
 
 export default function Home () {
     
@@ -156,6 +157,7 @@ export default function Home () {
                               ) }</button>
                     </div>
                 </div>
+                <Player/>
             </div>
         </Container>
     )
