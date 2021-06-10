@@ -1,6 +1,7 @@
 import PlayerStyles from './PlayerStyles'
 
 const Player = () => {
+
     return (
         <PlayerStyles>
             
