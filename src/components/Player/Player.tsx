@@ -9,7 +9,7 @@ const Player = () => {
         dispatch
       } = useContext(Context);
 
-    //   ideia de criar um comp player pra ser responsável por controlar o audio e criar um context específico
+    //   ideia de criar um como player pra ser responsável por controlar o audio e criar um context específico
 
 
 
