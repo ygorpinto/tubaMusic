@@ -2,7 +2,7 @@ import { useContext } from 'react';
 import { Context } from '../../utils/context';
 import PlayerStyles from './PlayerStyles'
 
-const Player = () => {
+const Player = ({children}) => {
 
     const {
         state,
@@ -15,7 +15,7 @@ const Player = () => {
 
     return (
         <PlayerStyles>
-            
+            {children}
         </PlayerStyles>
     )
 }
